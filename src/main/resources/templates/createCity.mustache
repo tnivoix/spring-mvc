@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Super appli</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    </head>
+
+    <body>
+        <h1>Nouvelle ville</h1>
+
+        <form action="/cities/add" method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" placeholder="Name">
+            <label for="population">Population</label>
+            <input type="text" name="population" placeholder="Population">
+            <label for="country">Country</label>
+            <select name="country">
+                {{#countries}}
+                <option value="{{id}}">{{name}}</option>
+                {{/countries}}
+            </select>
+            <input type="submit" value="Add City"> 
+        </form>
+
+    </body>
+
+</html>

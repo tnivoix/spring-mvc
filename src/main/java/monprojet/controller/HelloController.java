@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import lombok.extern.slf4j.Slf4j;
+import monprojet.dao.CityRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/hello") // This means URL's start with /hello (after Application path)

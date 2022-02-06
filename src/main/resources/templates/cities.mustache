@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <title>Super appli</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    </head>
+
+    <body>
+        <h1>Mon super site de pays</h1>
+
+        <h2>Liste des villes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pays</th>
+                    <th>Ville</th>
+                    <th>Population</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#cities}}
+                <tr>
+                    <td>{{country.name}}</td>
+                    <td>{{name}}</td>
+                    <td>{{population}}</td>
+                    <td>
+                        <a href="/cities/edit/{{id}}">Modifier</a>
+                        <a href="/cities/delete/{{id}}">Supprimer</a>
+                    </td>
+                </tr>
+                {{/cities}}
+            </tbody>
+        </table>
+        <a href="/cities/create">Créer</a>
+    </body>
+
+</html>
