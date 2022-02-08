@@ -48,13 +48,11 @@ public class CountryController {
 
     @PostMapping("/add")
     public String addUser(
-            @RequestParam String name,
-            @RequestParam int population,
-            @RequestParam int country,
+            City city,
             Model model) {
         
-        City city = new City(name, countryDao.findById(country).get());
-        city.setPopulation(population);
+        //City city = new City(name, countryDao.findById(country).get());
+        //city.setPopulation(population);
 
         cityDao.save(city);
         return "redirect:/" + CITIES_VIEW;
@@ -72,16 +70,13 @@ public class CountryController {
 
     @PostMapping(path = "/update")
     public String updateCity(
-            @RequestParam int id,
-            @RequestParam String name,
-            @RequestParam int population,
-            @RequestParam int country,
+            City city,
             Model model) {
 
-        City city = cityDao.findById(id).get();
-        city.setName(name);
-        city.setPopulation(population);
-        city.setCountry(countryDao.findById(country).get());
+        //City city = cityDao.findById(id).get();
+        //city.setName(name);
+        //city.setPopulation(population);
+        //city.setCountry(countryDao.findById(country).get());
 
         cityDao.save(city);
         return "redirect:/" + CITIES_VIEW;
