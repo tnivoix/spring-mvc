@@ -18,7 +18,8 @@ import lombok.ToString;
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity // Une entité JPA
 public class City {
-    @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
 
     @NonNull

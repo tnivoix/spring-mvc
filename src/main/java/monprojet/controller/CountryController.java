@@ -24,7 +24,6 @@ public class CountryController {
 
     private static final String CITIES_VIEW = "cities";
     private static final String EDIT_VIEW = "editCity";
-    private static final String CREATE_VIEW = "createCity";
 
     @Autowired
     private CityRepository cityDao;
@@ -41,50 +40,33 @@ public class CountryController {
 
     // Create one city
     @GetMapping("/create")
-    public String createCity(City city, Model model) {
+    public String createCity(Model model) {
+        City city = new City("Nouvelle ville", countryDao.findById(1).get());
+        city.setPopulation(0);
+        log.info(""+city.getId());
+        model.addAttribute("city", city);
         model.addAttribute("countries", countryDao.findAll());
-        return CREATE_VIEW;
+        return EDIT_VIEW;
     }
-
-    @PostMapping("/add")
-    public String addUser(
-            City city,
-            Model model) {
-        
-        //City city = new City(name, countryDao.findById(country).get());
-        //city.setPopulation(population);
-
-        cityDao.save(city);
-        return "redirect:/" + CITIES_VIEW;
-    }
-
-    // Edit one city
     
+    // Edit one city
     @GetMapping(path = "/edit/{id}")
     public String editCity(@PathVariable int id, Model model) {
-
         model.addAttribute("city", cityDao.findById(id).get());
         model.addAttribute("countries", countryDao.findAll());
         return EDIT_VIEW;
     }
 
+    // Save one city
     @PostMapping(path = "/update")
-    public String updateCity(
-            City city,
-            Model model) {
-
-        //City city = cityDao.findById(id).get();
-        //city.setName(name);
-        //city.setPopulation(population);
-        //city.setCountry(countryDao.findById(country).get());
-
+    public String updateCity(City city) {
         cityDao.save(city);
         return "redirect:/" + CITIES_VIEW;
     }
 
     // Delete one city
     @GetMapping(path = "delete/{id}")
-    public String deleteCity(@PathVariable int id, Model model) {
+    public String deleteCity(@PathVariable int id) {
         cityDao.deleteById(id);
         return "redirect:/" + CITIES_VIEW;
     }
